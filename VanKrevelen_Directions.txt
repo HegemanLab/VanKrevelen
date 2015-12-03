@@ -1,0 +1,48 @@
+Some notes about the technology specifications of this script: 	
+	
+Uses Python 2.7 - unsure of compatibility with 3.5, but incompatible with 3.4
+All packages used can be obtained through downloading the Anaconda Python Distribution from Continuum Analytics (it's free, don't worry :) ) if you are planning to use mzXML files or will be entering in chemical compounds from the start. If you plan to use mzML files, you will also need to install pymzML. Installation instructions can be found by searching pymzML online. Depending on how your computer is configured, you may be able to run the scripts by using the same commands listed above but with out the leading word "python".
+
+
+To run this program, save a copy of your mzXML file to this folder. Open the command prompt	
+and navigate into this folder. The commands should be something similar to:	
+	
+>cd Desktop	
+>cd VanKrevelen	
+	
+if you saved the script to your desktop. If you need to move up a file level, use the "cd .." command.
+A decent introduction to the commandline can be found here http://lifehacker.com/5633909/who-needs-a-mouse-learn-to-use-the-command-line-for-almost-anything but this has way more information than you will need for running this script.
+	
+Note: if running on OSX these commands are case sensitive
+	
+Then to run the first script, run the command (substitute driver for driverML and .mzXML for .mzML if you are using mzML files):
+	
+>python driver.py yourfile.mzXML	
+	
+where you replace yourfile.mzXML with your actual file name including the mzXML extension.
+
+Note: You need to be running Python 2.7. 
+	
+The script will run through your mzXML file and will end by opening your default web browser (if connected	
+to the internet) to the formula calculator web page (http://www.bmrb.wisc.edu/metabolomics/mass_query.php). You will also find two new txt files in your folder with the same name as your mzXML file but with -neg and -pos added to the end and now with the .txt file extension added to the end. 	
+	
+To properly configure the calculator we recommend changing the mass distribution to 5 if you are using a high enough resolution machine. Also, uncheck the Monoisotopic composition boxes except for natural composition (unless you are running a labeled test). If you are looking at negative mode scans, set the ionization to +1 (additional H+) and for positive mode scans use -1 (less one H+). This configuration may vary based on your equipment***.
+	
+Go to the "Query by:" section and copy and paste the values from either the yourfile-neg.txt or yourfile-pos.txt file, or select that file using the choose file button, and then make sure the "Email Results to:" box is checked and your email is entered. Select "Query Masses" from the bottom of the page and await your results. This can take several minutes, and you should know the process has completed when the processing wheel (next to the website name in your browser) stops spinning. Note, each mass must be on its own line.A helpful tip for copying the values: When highlighting, hold down shift and use the end key on your keyboard to jump to the bottom of the page. This is useful for copying the values to query and also for the next step.
+	
+Once you have received your results, copy and paste all of them into Excel or a similar spreadsheet program. If you use GMail for your email you will likely have to go to the bottom of the email and then select "View entire message" NOTE: ***Do not copy any of the titles, your first row should start with a a mass*** The values will likely all paste as a single column. If this is the case, go to the "Data" ribbon and select "Text to Columns" while column A is selected with all the data in it. Excel will then prompt you to select either "delimited" or "fixed width". Select "Fixed width" and press the next button. Next, make sure that the elemental information will begin in the fourth row (D) and that there won't be spaces or any other characters before any of the compound data. The lines you place should be justified square to the compound data. This should be fairly similar to how Excel naturally sets up the divisions, but may require some adjustment. Using Excel 2013 I needed to only set cutoffs at EXACTLY 16, 32, and 48 on the fixed width scale. These should work for your analysis as well and are the EXACT values where the delimiters should be set. The delimiter set at 48 is the most important as the analysis won't be able to run if this isn't done properly. Click finish. Once that is complete, got to file>>>save as and then save the file as a .csv file (comma delimited).
+	
+Return back to the command prompt. Make sure you are still in the VanKrevelen folder and then enter**:
+	
+>python VanKrevelenType.py yourNewFile.csv	
+	
+Where you replace VanKrevelenType.py with the type of diagram you want to generate (VanKrevelenHeatmap.py, VanKrevelenSideBySide.py, or VanKrevelen.py) and also replace yourNewFile.csv with your actual file name including the .csv extension. This should generate your Van Krevelen Diagram. A new window will open displaying your plot and you can use the save button to save it in a convenient format and location (we recommend saving as a pdf or another other vector graphic format). The script will stop running once you close the display and then you can run another test.
+
+** If you are running the VanKrevelenYourMap.py script, you will need to provide the script name plus two .csv files. The first will be the file to plot, the second will be the file to use to make the heat map. The call will look something like...
+
+>python VanKrevelenYourMap.py yourPlottingFile.csv yourMappingFile.csv
+
+*** Currently this portion of the script is a bit overly manual and is definitely the slower part of the procedure. That being said, BMRB is working on developing an API which may allow for updates to be made to this script to automate a large portion of this procedure.
+
+Citation for pymzML
+Bald, T., Barth, J., Niehues, A., Specht, M., Hippler, M., and Fufezan, C. (2012) pymzML - Python module for high throughput bioinformatics on mass spectrometry data, Bioinformatics, doi: 10.1093/bioinformatics/bts066
