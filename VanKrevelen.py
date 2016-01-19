@@ -40,6 +40,8 @@ fig = plt.figure()
 fig.suptitle('Van Krevelen Diagram', fontsize=14, fontweight='bold')
 ax = fig.add_subplot(111)
 fig.subplots_adjust(top=0.85)
+plt.xlim(0, 1.4)
+plt.ylim(0, 2.5)
 
 ax.set_xlabel('O:C Ratio')
 ax.set_ylabel('H:C Ratio')
