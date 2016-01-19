@@ -37,7 +37,7 @@ def extract_needed_elemental_data(csv_output_file_name):
 
 '''
 Note, this current format only works for 1 letter elements which works fine for H, C, O, and N
-which is what is needed for VanKrevelen Analysis. Also works for up to 3 digits (ie  works but H1000 would
+which is what is needed for VanKrevelen Analysis. Also works for up to 3 digits (ie H999 works but H1000 would
 not work).
 '''
 
