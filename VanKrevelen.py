@@ -60,6 +60,9 @@ for i in range(len(ratios_list[2])):
         listByN[1].append([ratios_list[1][i], ratios_list[0][i], 'b', 'o'])
 
 # Creates plots by individually plotting values with N or with out N.
+withN = None
+withoutN = None
+
 counter = 0
 for i in listByN:
     for j in i:
@@ -70,7 +73,10 @@ for i in listByN:
     counter += 1
 
 # Generates legend
-plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints=1, loc='lower left', ncol=1, fontsize=9)
+if withN and withoutN:
+    plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints=1, loc='lower left', ncol=1, fontsize=9)
+
+
 plt.show()
 
 print("done")

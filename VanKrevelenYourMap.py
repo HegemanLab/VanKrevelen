@@ -121,7 +121,8 @@ for i in listByN:
 myaximage = ax.imshow(img, aspect='auto',extent=(0, 1.4, 0, 2.5), alpha=1, zorder=-1)
 
 # Shows legend.
-plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints = 1, loc='lower left', ncol=1, fontsize=9)
+if withN and withoutN:
+    plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints = 1, loc='lower left', ncol=1, fontsize=9)
 
 plt.show()
 

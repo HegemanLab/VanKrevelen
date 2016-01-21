@@ -61,7 +61,8 @@ for i in listByN:
             withoutN = ax.scatter(xs=j[0], ys=j[1], zs=j[2], s=15.0, c=j[3], marker=j[4], alpha=.25)
     counter += 1
 
-plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints=1, loc='lower left', ncol=1, fontsize=9)
+if withoutN and withN:
+    plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints=1, loc='lower left', ncol=1, fontsize=9)
 
 '''
 Second plot rotated 6 degrees per stereoscopic best practices.
@@ -71,6 +72,9 @@ ax2 = fig.add_subplot(122, projection='3d')
 ax2.set_xlabel('O:C Ratio')
 ax2.set_ylabel('H:C Ratio')
 ax2.set_zlabel('N:C Ratio')
+
+withoutN = None
+withN = None
 
 counter = 0
 for i in listByN:
@@ -83,14 +87,16 @@ for i in listByN:
 
 ax2.azim -= 6
 
-plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints=1, loc='lower left', ncol=1, fontsize=9)
+if withN and withoutN:
+    plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints=1, loc='lower left', ncol=1, fontsize=9)
 
 
 plt.tight_layout(w_pad=.18)
 
 '''
 If you would rather not display the file and just want to save it in a specific format, remove the comment from the
-line below (delete the first #) and comment out the next line (add a # to the front of the line of code).
+line below (delete the first #) and comment out the next line (add a # to the front of the line of code that says
+plt.show()).
 '''
 
 # plt.save("filename.pdf") # or whatever file type you need.
