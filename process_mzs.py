@@ -49,5 +49,5 @@ def process_mzs(mzXML_obj):
     filtered_pos_mz = list(set(keepers_pos_mz))
 
     # Combines list where negatives are in the 0 position and positives in the 1
-    combo_set = [filtered_neg_mz, filtered_pos_mz]
-    return combo_set
+    combo_list = [filtered_neg_mz, filtered_pos_mz]
+    return combo_list
