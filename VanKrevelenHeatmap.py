@@ -76,7 +76,7 @@ for pair in tList:
 
 # Generates Heatmap
 hm = heatmap.Heatmap()
-img = hm.heatmap(filteredtups, dotsize = 100, opacity = 250, scheme='classic', area=((0,0),(1.4,2.5)))
+img = hm.heatmap(filteredtups, dotsize = 100, opacity = 250, scheme='classic', area=((0,0),(1.8,3.0)))
 
 # Graphs the data provided and labels axes
 fig = plt.figure()

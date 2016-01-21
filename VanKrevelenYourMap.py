@@ -87,7 +87,7 @@ for pair in tList:
 
 # Generates Heatmap
 hm = heatmap.Heatmap()
-img = hm.heatmap(filtered_tuples, dotsize=100, opacity=250, scheme='classic', area=((0, 0), (1.4, 2.5)))
+img = hm.heatmap(filtered_tuples, dotsize=100, opacity=250, scheme='classic', area=((0, 0), (1.8, 3.0)))
 
 # Graphs the data provided and labels axes
 fig = plt.figure()
@@ -118,7 +118,7 @@ for i in listByN:
     counter += 1
 
 # Adds in heatmap image as background image
-myaximage = ax.imshow(img, aspect='auto',extent=(0, 1.4, 0, 2.5), alpha=1, zorder=-1)
+myaximage = ax.imshow(img, aspect='auto',extent=(0, 1.8, 0, 3.0), alpha=1, zorder=-1)
 
 # Shows legend.
 if withN and withoutN:

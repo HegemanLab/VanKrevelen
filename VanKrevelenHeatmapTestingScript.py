@@ -76,7 +76,7 @@ for files in mappingFiles:
             filtered_tuples.append(pair)
 
     hm = heatmap.Heatmap()
-    img = hm.heatmap(filtered_tuples, dotsize=100, opacity=250, scheme='classic', area=((0, 0), (1.4, 2.5)))
+    img = hm.heatmap(filtered_tuples, dotsize=100, opacity=250, scheme='classic', area=((0, 0), (1.8, 3.0)))
 
     # Graphs the data provided and labels axes
 
@@ -112,7 +112,7 @@ for files in mappingFiles:
 
     '''
 
-    myaximage = ax.imshow(img, aspect='auto' ,extent=(0,1.4,0,2.5), alpha=1, zorder=-1)
+    myaximage = ax.imshow(img, aspect='auto' ,extent=(0, 1.8, 0, 3.0), alpha=1, zorder=-1)
 
     # NOTE: Figures saved, not displayed.
     plt.savefig(files[:len(files) - 4] + ".pdf")
