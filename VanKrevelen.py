@@ -14,11 +14,13 @@ from processElementalData import process_elemental_data
 usage_mesg = 'VanKrevelen.py <csv file(s)>'
 
 # Checks if files are available.
+
 filename_csv = sys.argv[1]
 if not os.access(filename_csv, os.R_OK):
     print "%s is not accessible." % filename_csv
     print usage_mesg
     sys.exit(1)
+
 
 # If two arguments were given
 if len(sys.argv) == 2:

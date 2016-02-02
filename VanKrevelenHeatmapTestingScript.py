@@ -34,6 +34,7 @@ Files to test in a list
 Example:
 
 mappingFiles = [
+"nucelotide.csv",
 "CoreAminoAcids.csv",
 "FattyAcyls.csv",
 "Flavonoids.csv",

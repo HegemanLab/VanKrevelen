@@ -44,6 +44,27 @@ while new_file.lower() != "done":
     print("\nEnter another file with its extension, or enter 'done' and hit return.")
     new_file = raw_input("Enter Input: ")
 
+print("\nNext this script will process your files. It will do so by processing each file individually. To do so "
+      "it will look at the maximum intensity of a spectrum in the file and then assign a threshold to value that "
+      "is some percentage of that maximum. The threshold will be used to determine what values are significant and "
+      "what values are just noise. We recommend a threshold of 10% but you can set your own here. please enter your "
+      "threshold percentage as a number with no percentage sign. (For example, if you wanted 15%, enter 15)")
+
+threshold_input = raw_input("\nThreshold: ")
+t_flag = False
+
+while not t_flag:
+    try:
+        threshold = float(threshold_input) * .01
+        t_flag = True
+    except:
+        threshold_input = raw_input("\nIncorrect input, please enter just a number.\nThreshold: ")
+
+try:
+    outputName = str(raw_input("What would you like to call this data set? (No spaces please.) Name: "))
+except:
+    outputName = raw_input("Enter name: ")
+
 # Sets up book keeping lists and then processes it depending on if it's an mzXML file or mzML file .
 neg_pos_mz_sets = [[], []]
 
@@ -52,13 +73,13 @@ for f in files:
     if ".mzXML" in f:
         mzXML = MzXML()
         mzXML.parse_file(f)
-        neg_pos_mz_sets_temp = XML_process(mzXML)
+        neg_pos_mz_sets_temp = XML_process(mzXML, threshold=threshold)
         neg_pos_mz_sets[0] = neg_pos_mz_sets[0] + neg_pos_mz_sets_temp[0]
         neg_pos_mz_sets[1] = neg_pos_mz_sets[1] + neg_pos_mz_sets_temp[1]
     elif ".mzML" in f:
         # Use ML processing
         print "Reading %s ..." % f
-        neg_pos_mz_sets_temp = ML_process(f)
+        neg_pos_mz_sets_temp = ML_process(f, threshold=threshold)
         neg_pos_mz_sets[0] = neg_pos_mz_sets[0] + neg_pos_mz_sets_temp[0]
         neg_pos_mz_sets[1] = neg_pos_mz_sets[1] + neg_pos_mz_sets_temp[1]
 
@@ -66,11 +87,10 @@ for f in files:
 neg_pos_mz_sets[0] = list(set(neg_pos_mz_sets[0]))
 neg_pos_mz_sets[1] = list(set(neg_pos_mz_sets[1]))
 
-# Gets file name
-name = raw_input("\nWhat would you like to call this data set? (No spaces please.)\nName: ")
+
 
 # Fix for how writeTxt works - ugly code
-name = name + "xxxxxx"
+name = outputName + "xxxxxx"
 
 # Patch for bug when writing one file. Probably a better way to do this but this works.
 if len(neg_pos_mz_sets[0]) > len(files):

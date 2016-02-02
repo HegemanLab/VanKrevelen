@@ -2,13 +2,11 @@
 Churns through an mzXML object to generate lists of positive and negative
 mz values.
 '''
-# What fraction of the max intensity you want to use for a threshold
-THRESHOLD_CONSTANT = .1
 
 
 # Takes an mzXML object which contains a list of intensities, a
 # list of mzs, and a value for the threshold intensity for filtering.
-def process_mzs(mzXML_obj):
+def process_mzs(mzXML_obj, threshold=.1):  # What fraction of the max intensity you want to use for a threshold
     # For elements that clear the filter
     keepers_neg_mz = []
     keepers_pos_mz = []
@@ -16,7 +14,7 @@ def process_mzs(mzXML_obj):
     # Loops through positive list and negative list and adds mz values to the keeper list when the intensity is
     # above a threshold
     for scan in mzXML_obj.MS1_list:
-        thresh = max(scan.intensity_list) * THRESHOLD_CONSTANT
+        thresh = max(scan.intensity_list) * threshold
         i = 0
         for peak in scan.intensity_list:
             if peak > thresh:
@@ -26,7 +24,7 @@ def process_mzs(mzXML_obj):
                     keepers_pos_mz.append(scan.mz_list[i])
             i += 1
     for scan in mzXML_obj.MS2_list:
-        thresh = max(scan.intensity_list) * THRESHOLD_CONSTANT
+        thresh = max(scan.intensity_list) * threshold
         i = 0
         for peak in scan.intensity_list:
             if peak > thresh:
@@ -35,14 +33,6 @@ def process_mzs(mzXML_obj):
                 elif scan.polarity == '+':
                     keepers_pos_mz.append(scan.mz_list[i])
             i += 1
-    #
-    # for scan in mzXML_obj.MS2_list:
-    #     thresh = max(scan.intensity_list) * THRESHOLD_CONSTANT
-    #     i = 0
-    #     for peak in scan.intensity_list:
-    #         if peak > thresh:
-    #             keepers_pos_mz.append(scan.mz_list[i])
-    #         i += 1
 
     # Removes duplicates
     filtered_neg_mz = list(set(keepers_neg_mz))

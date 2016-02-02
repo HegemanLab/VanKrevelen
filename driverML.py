@@ -6,6 +6,7 @@ import sys
 import os
 import webbrowser
 
+
 # additional created classes/packages
 from writeTxt import writeTxt
 
@@ -14,6 +15,8 @@ from process_mzs_mzML import process_mzs
 # Message in case of error
 usage_mesg = 'driverML.py <mzML file>'
 
+#TODO Recomment once testing is done.
+'''
 # Checks to make sure two and only two arguments were entered into the command line
 if len(sys.argv) != 2:
     print usage_mesg
@@ -27,6 +30,9 @@ if not os.access(filename, os.R_OK):
     sys.exit(1)
 
 sys.stderr.write("Reading %s ... " % filename)
+'''
+
+filename = "7Bf2.mzML"
 
 # Takes in the mzML file and processes all the data to extract a list with both the positive and
 # negative mz values extracted. Then writes those to two .txt files.
@@ -39,5 +45,6 @@ if neg_pos_mz_sets[1]:
 
 # Automatically opens the web browser with the calculator page open
 webbrowser.open('http://www.bmrb.wisc.edu/metabolomics/mass_query.php', new=1)
+
 
 print('done')

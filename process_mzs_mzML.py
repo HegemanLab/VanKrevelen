@@ -7,24 +7,22 @@ Bald, T., Barth, J., Niehues, A., Specht, M., Hippler, M., and Fufezan, C. (2012
 '''
 
 import pymzml
-import sys
 
-# What fraction of the max intensity you want to use for a threshold
-THRESHOLD_CONSTANT = .1
+import sys
 
 
 # Takes an mzXML object which contains a list of intensities, a
 # list of mzs, and a value for the threshold intensity for filtering.
-def process_mzs(file_name):
+def process_mzs(file_name, threshold=.1):  # What fraction of the max intensity will be used for a threshold
 
     # Sets up mzML reader
     ms_run = pymzml.run.Reader(
-        file_name,
-        obo_version='1.1.0',
-        extraAccessions=[
-            ('MS:1000129', ['value']),
-            ('MS:1000130', ['value'])
-        ]
+            file_name,
+            obo_version='1.1.0',
+            extraAccessions=[
+                ('MS:1000129', ['value']),
+                ('MS:1000130', ['value'])
+            ]
     )
 
     # For elements that clear the filter
@@ -37,31 +35,23 @@ def process_mzs(file_name):
     not decoding properly but the try and except handles that).
     '''
     # Variable to make sure loop continues even if an error is thrown
-    running = True
-    while running:
+    # for each spectrum in a "run" (iteration)
+    for spectrum in ms_run:
         try:
-            i = 0
-            # for each spectrum in a "run" (iteration)
-            for spectrum in ms_run:
+            # Calculate the max value and then generate a threshold based on that.
+            maxS = max(spectrum.i)
+            thresh = maxS * threshold
 
-                # Calculate the max value and then generate a threshold based on that.
-                maxS = max(spectrum.i)
-                thresh = maxS * THRESHOLD_CONSTANT
+            # Looks at each peak intensity, and if it is past the threshold, adds it to the neg or pos list
+            for peak in spectrum.peaks:
+                if peak[1] > thresh:
+                    negative_polarity = spectrum.get('MS:1000129', False)
+                    if negative_polarity == None:
+                        keepers_neg_mz.append(peak[0])
 
-                # Looks at each peak intensity, and if it is past the thresh hold, adds it to the neg or pos list
-                for peak in spectrum.peaks:
-                    if peak[1] > thresh:
-                        negative_polarity = spectrum.get('MS:1000129', False)
-                        if negative_polarity == '':
-                            keepers_neg_mz.append(peak[0])
-
-                        positive_polarity = spectrum.get('MS:1000130', False)
-                        if positive_polarity == '':
-                            keepers_pos_mz.append(peak[0])
-
-            running = False
-
-        # Error catching. Generic used here for readability
+                    positive_polarity = spectrum.get('MS:1000130', False)
+                    if positive_polarity == '':
+                        keepers_pos_mz.append(peak[0])
         except:
             pass
 
@@ -72,5 +62,3 @@ def process_mzs(file_name):
     # Combines list where negatives are in the 0 position and positives in the 1
     combo_set = [filtered_neg_mz, filtered_pos_mz]
     return combo_set
-
-
