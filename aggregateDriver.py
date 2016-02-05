@@ -44,11 +44,11 @@ while new_file.lower() != "done":
     print("\nEnter another file with its extension, or enter 'done' and hit return.")
     new_file = raw_input("Enter Input: ")
 
-print("\nNext this script will process your files. It will do so by processing each file individually. To do so "
+print("\nNext this script will process your files. \nIt will do so by processing each file individually. \nTo do so "
       "it will look at the maximum intensity of a spectrum in the file and then assign a threshold to value that "
-      "is some percentage of that maximum. The threshold will be used to determine what values are significant and "
-      "what values are just noise. We recommend a threshold of 10% but you can set your own here. please enter your "
-      "threshold percentage as a number with no percentage sign. (For example, if you wanted 15%, enter 15)")
+      "is some percentage of that maximum. \nThe threshold will be used to determine what values are significant and "
+      "what values are just noise. \nWe recommend a threshold of 10% but you can set your own here. please enter your "
+      "threshold percentage as a number with no percentage sign. \n(For example, if you wanted 15%, enter 15)")
 
 threshold_input = raw_input("\nThreshold: ")
 t_flag = False
