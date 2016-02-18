@@ -10,8 +10,8 @@ import pandas as pd
 
 
 # short helper to pass into map. Takes number and rounds to 3 decimal places
-def roundto3(x):
-    return round(x, 3)
+def roundto4(x):
+    return round(x, 4)
 
 # Takes list of values and returns the unique m/z values and their counts
 def finder(in_list):
@@ -62,22 +62,22 @@ def processDuplicates(files_list, outputname):
 
 
 # Example use
-# nfiles = [
-#     'neg-ACM_sept16_T1R2_GL2_method1.csv',
-#     'neg-ACM_sept16_T1R2_GL7_method1.csv',
-#     'neg-ACM_sept16_T1R3_GL7_method1.csv',
-#     'neg-ACM_sept16_T1R3_GL21_method1.csv'
-# ]
-#
-# pfiles = [
-#     'pos-ACM_sept16_T1R2_GL2_method1.csv',
-#     'pos-ACM_sept16_T1R2_GL7_method1.csv',
-#     'pos-ACM_sept16_T1R3_GL7_method1.csv',
-#     'pos-ACM_sept16_T1R3_GL21_method1.csv'
-# ]
-#
-# processDuplicates(nfiles, 'neg-ACM-dups.csv')
-# processDuplicates(pfiles, 'pos-ACM-dups.csv')
+nfiles = [
+    'neg-ACM_sept16_T1R2_GL2_method1.csv',
+    'neg-ACM_sept16_T1R2_GL7_method1.csv',
+    'neg-ACM_sept16_T1R3_GL7_method1.csv',
+    'neg-ACM_sept16_T1R3_GL21_method1.csv'
+]
+
+pfiles = [
+    'pos-ACM_sept16_T1R2_GL2_method1.csv',
+    'pos-ACM_sept16_T1R2_GL7_method1.csv',
+    'pos-ACM_sept16_T1R3_GL7_method1.csv',
+    'pos-ACM_sept16_T1R3_GL21_method1.csv'
+]
+
+processDuplicates(nfiles, 'neg-ACM-dups.csv')
+processDuplicates(pfiles, 'pos-ACM-dups.csv')
 
 print 'boom'
 
