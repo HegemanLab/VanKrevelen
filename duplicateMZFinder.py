@@ -18,7 +18,7 @@ def finder(in_list):
 
     # Rounds each value in each list of mzs (1 list per file input)
     for i in range(len(in_list)):
-         in_list[i] = map(roundto3, in_list[i])
+         in_list[i] = map(roundto4, in_list[i])
 
     # Removes duplicates
     no_dups = []
