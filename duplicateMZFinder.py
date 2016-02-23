@@ -1,7 +1,8 @@
 '''
 Little tool that takes in list of m/zs and then outputs
 each mz that was present as well as how many times it showed up
-overall in all of the inputted lists of m/zs
+overall in all of the inputted lists of m/zs. Rounds to 4 decimal places
+as is.
 '''
 
 
@@ -49,6 +50,7 @@ def writeToCSV(mzs_and_counts, output_filename):
 
 
 # Reads in mz values from a file and returns list of mzs
+# FILE MUST HAVE 'mz' AS COLUMN HEADER
 def readFromCSV(filename):
     df = pd.read_csv(filename)
     return list(df['mz']) # Make sure file has a column named mz
