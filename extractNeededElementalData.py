@@ -160,6 +160,4 @@ def find_elements_values(elements_to_find, compounds):
     return complete_element_counts
 
 
-filename = 'C:\Users\Lab\Desktop\Coding_Bits\VanKrevelen\example-neg-formulas.txt'
 
-print extract_needed_elemental_data(filename)
