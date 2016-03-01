@@ -35,15 +35,15 @@ def compareXY(XY1, XY2):
 usage_mesg = 'VanKrevelenYourMap.py <file to plot> <file for map>'
 
 # Checks if files are available.
-filename_csv = sys.argv[1]
-if not os.access(filename_csv, os.R_OK):
-    print "%s is not accessible." % filename_csv
+filename_txt = sys.argv[1]
+if not os.access(filename_txt, os.R_OK):
+    print "%s is not accessible." % filename_txt
     print usage_mesg
     sys.exit(1)
 
-filename_csv = sys.argv[2]
-if not os.access(filename_csv, os.R_OK):
-    print "%s is not accessible." % filename_csv
+filename_txt = sys.argv[2]
+if not os.access(filename_txt, os.R_OK):
+    print "%s is not accessible." % filename_txt
     print usage_mesg
     sys.exit(1)
 
@@ -51,13 +51,13 @@ if not os.access(filename_csv, os.R_OK):
 if(len(sys.argv) == 3 ):
 
     # Processes file to plot (top layer)
-    filename_csv_plot = sys.argv[1]
-    elementalList_plot = extract_needed_elemental_data(filename_csv_plot)
+    filename_txt_plot = sys.argv[1]
+    elementalList_plot = extract_needed_elemental_data(filename_txt_plot)
     ratiosList_plot = process_elemental_data(elementalList_plot)
 
     # Processes file to map (bottom image)
-    filename_csv_map = sys.argv[2]
-    elementalList_map = extract_needed_elemental_data(filename_csv_map)
+    filename_txt_map = sys.argv[2]
+    elementalList_map = extract_needed_elemental_data(filename_txt_map)
     ratiosList_map = process_elemental_data(elementalList_map)
 
 
@@ -127,29 +127,4 @@ if withN and withoutN:
 plt.show()
 
 print "Done!"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

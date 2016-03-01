@@ -14,20 +14,20 @@ import matplotlib.pyplot as plt
 from extractNeededElementalData import extract_needed_elemental_data
 from processElementalData import process_elemental_data
 
-usage_mesg = 'VanKrevelenSideBySide.py <csv file(s)>'
+usage_mesg = 'VanKrevelenSideBySide.py <txt file(s)>'
 
 
 # Checks if files are available.
-filename_csv = sys.argv[1]
-if not os.access(filename_csv, os.R_OK):
-    print "%s is not accessible." % filename_csv
+filename_txt = sys.argv[1]
+if not os.access(filename_txt, os.R_OK):
+    print "%s is not accessible." % filename_txt
     print usage_mesg
     sys.exit(1)
 
 # Checks if the right number of arguments are provided.
 if len(sys.argv) == 2:
-    filename_csv = sys.argv[1]
-    elementalList = extract_needed_elemental_data(filename_csv)
+    filename_txt = sys.argv[1]
+    elementalList = extract_needed_elemental_data(filename_txt)
     ratiosList = process_elemental_data(elementalList)
 
 # Graphs the data provided and labels axes

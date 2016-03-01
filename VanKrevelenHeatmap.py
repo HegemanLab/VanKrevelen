@@ -36,19 +36,19 @@ def compareXY(XY1, XY2):
  
     return okay
 
-usage_mesg = 'VanKrevelenHeatmap.py <csv file(s)>'
+usage_mesg = 'VanKrevelenHeatmap.py <txt file(s)>'
 
 # Checks if files are available.
-filename_csv = sys.argv[1]
-if( not os.access(filename_csv,os.R_OK) ):
-    print "%s is not accessible."%filename_csv
+filename_txt = sys.argv[1]
+if(not os.access(filename_txt, os.R_OK)):
+    print "%s is not accessible." % filename_txt
     print usage_mesg
     sys.exit(1)
 
 
 if(len(sys.argv) == 2 ):
-    filename_csv = sys.argv[1]
-    elementalList = extract_needed_elemental_data(filename_csv)
+    filename_txt = sys.argv[1]
+    elementalList = extract_needed_elemental_data(filename_txt)
     ratiosList = process_elemental_data(elementalList)
 
 # Another good area to adjust configurations. This is the percent of nodes that
@@ -83,6 +83,8 @@ fig = plt.figure()
 fig.suptitle('Van Krevelen Heatmap', fontsize=14, fontweight='bold')
 ax = fig.add_subplot(111)
 fig.subplots_adjust(top=0.85)
+plt.xlim(0, 1.8)
+plt.ylim(0, 3.0)
 
 ax.set_xlabel('O:C Ratio')
 ax.set_ylabel('H:C Ratio')
@@ -110,7 +112,7 @@ for i in listByN:
             withoutN = plt.scatter(j[0], j[1], 15.0, j[2], j[3], alpha = .25)
     counter += 1
 '''
-myaximage = ax.imshow(img, aspect='auto' ,extent=(0,1.4,0,2.5), alpha=1, zorder=-1)
+myaximage = ax.imshow(img, aspect='auto', extent=(0, 1.8, 0, 3.0), alpha=1, zorder=-1)
 
 # Remove this comment if you want to see a legend when actually plotting the points.
 # plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints = 1, loc='lower left', ncol=1,fontsize = 9)

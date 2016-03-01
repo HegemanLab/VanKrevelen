@@ -91,7 +91,8 @@ class MzXML():
             # Assigns attributes to their logical properties
             tmp_ms.id = int(attrs['num'])
             tmp_ms.peak_count = int(attrs['peaksCount'])
-            tmp_ms.filter_line = attrs['filterLine']
+            # TODO uncomment this section
+            # tmp_ms.filter_line = attrs['filterLine']
             tmp_ms.retention_time = float(attrs['retentionTime'].strip('PTS'))
             tmp_ms.low_mz = float(attrs['lowMz'])
             tmp_ms.high_mz = float(attrs['highMz'])

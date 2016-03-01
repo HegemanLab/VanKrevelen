@@ -11,13 +11,13 @@ import matplotlib.pyplot as plt
 from extractNeededElementalData import extract_needed_elemental_data
 from processElementalData import process_elemental_data
 
-usage_mesg = 'VanKrevelen.py <csv file(s)>'
+usage_mesg = 'VanKrevelen.py <txt file(s)>'
 
 # Checks if files are available.
 
-filename_csv = sys.argv[1]
-if not os.access(filename_csv, os.R_OK):
-    print "%s is not accessible." % filename_csv
+filename_txt = sys.argv[1]
+if not os.access(filename_txt, os.R_OK):
+    print "%s is not accessible." % filename_txt
     print usage_mesg
     sys.exit(1)
 
@@ -26,10 +26,10 @@ if not os.access(filename_csv, os.R_OK):
 if len(sys.argv) == 2:
 
     # Assigns filename to the second argument provided in the command prompt
-    filename_csv = sys.argv[1]
+    filename_txt = sys.argv[1]
 
     # Gets complete list of all element counts in all compounds identified
-    elementalList = extract_needed_elemental_data(filename_csv)
+    elementalList = extract_needed_elemental_data(filename_txt)
 
     # Gets complete list of ratios (also contains boolean for presence of nitrogen
     ratios_list = process_elemental_data(elementalList)

@@ -28,33 +28,11 @@ def compareXY(XY1, XY2):
  
     return okay
 
-'''
-Files to test in a list
-
-Example:
-
-mappingFiles = [
-"nucelotide.csv",
-"CoreAminoAcids.csv",
-"FattyAcyls.csv",
-"Flavonoids.csv",
-"Glycerolipids.csv",
-"Glycerophospholipids.csv",
-"monosac.csv",
-"Polyketides.csv",
-"PrenolLipids.csv",
-"Saccharolipids.csv",
-"Sphingolipids.csv",
-"SterolLipids.csv",
-"Terpenoids.csv",
-"AllLipids.csv"
-]
-'''
-mappingFiles = ["example-neg.csv"]
+mappingFiles = ["example-neg.txt"]
 
 for files in mappingFiles:
-    filename_csv = files
-    elementalList = extract_needed_elemental_data(filename_csv)
+    filename_txt = files
+    elementalList = extract_needed_elemental_data(filename_txt)
     ratiosList = process_elemental_data(elementalList)
 
     PERCENT_NEAR = .15

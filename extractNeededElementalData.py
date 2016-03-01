@@ -4,35 +4,46 @@ other databases, to pull out the numbers of Hydrogens, Carbons, Oxygens, and Nit
 '''
 
 import csv
+import pandas as pd
 
 
-def extract_needed_elemental_data(csv_output_file_name):
+def extract_needed_elemental_data(tab_separated_txt_file):
+
     '''
     If you wanted to run similar analysis with this script you could modify this list however additional work
     would need to be done if any of the additional desired elements are represented by more than a single
     uppercase letter.
     '''
+
+    # List of compounds to be found and order they will be found in
     elements_to_find = ['C', 'H', 'O', 'N']
 
-    # File set up
-    f = open(csv_output_file_name)
-
-    # Initializes the reader
-    reader = csv.reader(f)
-
-    # Gets list of all compounds in csv
     compounds = []
-    for row in reader:
-        if row[3] != '':
-            compounds.append(row[3])
+    # open a text file
+    with open(tab_separated_txt_file) as f:
 
-    # Calls function below to get back counts of each element
+        # Hard coded for number of characters each column has
+        n = 16
+
+        # Set up file reader
+        reader = f.readlines()
+        for line in reader:
+
+            # Split line into columns
+            new_line = [line[i:i+n] for i in range(0, len(line), n)]
+
+            # If compound was not found by BMRB then 3 will be out of range, otherwise add that formula to the compounds
+            try:
+                compounds.append(new_line[3])
+            except:
+                pass
+
+    # Process elemental data and close file
     elemental_list = find_elements_values(elements_to_find, compounds)
-
-    # close up file being used
     f.close()
 
     return elemental_list
+
 
 
 '''
@@ -147,3 +158,8 @@ def find_elements_values(elements_to_find, compounds):
         complete_element_counts.append(line_element_counts)
 
     return complete_element_counts
+
+
+filename = 'C:\Users\Lab\Desktop\Coding_Bits\VanKrevelen\example-neg-formulas.txt'
+
+print extract_needed_elemental_data(filename)
