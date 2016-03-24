@@ -14,7 +14,6 @@ from processElementalData import process_elemental_data
 usage_mesg = 'VanKrevelen.py <txt file(s)>'
 
 # Checks if files are available.
-
 filename_txt = sys.argv[1]
 if not os.access(filename_txt, os.R_OK):
     print "%s is not accessible." % filename_txt

@@ -35,7 +35,6 @@ class MzXML():
         tmp_size = len(decoded) / 4
         unpack_format1 = ">%dL" % tmp_size
 
-        # Declares an index which will be used to dictate positive or negative scans
         idx = 0
 
         # Declares list for mzs and intensities

@@ -63,23 +63,27 @@ def processDuplicates(files_list, outputname):
     writeToCSV(finder(mzs), outputname)
 
 
-# # Example use
-# nfiles = [
-#     'neg-ACM_sept16_T1R2_GL2_method1.csv',
-#     'neg-ACM_sept16_T1R2_GL7_method1.csv',
-#     'neg-ACM_sept16_T1R3_GL7_method1.csv',
-#     'neg-ACM_sept16_T1R3_GL21_method1.csv'
-# ]
-#
-# pfiles = [
-#     'pos-ACM_sept16_T1R2_GL2_method1.csv',
-#     'pos-ACM_sept16_T1R2_GL7_method1.csv',
-#     'pos-ACM_sept16_T1R3_GL7_method1.csv',
-#     'pos-ACM_sept16_T1R3_GL21_method1.csv'
-# ]
-#
-# processDuplicates(nfiles, 'neg-ACM-dups.csv')
-# processDuplicates(pfiles, 'pos-ACM-dups.csv')
+# Example use
+nfiles = [
+    "neg-ACM_sept16_T1R2_GL2_method1.csv",
+    "neg-ACM_sept16_T1R2_GL7_method1.csv",
+    "neg-ACM_sept16_T1R2_GL21_method1.csv",
+    "neg-ACM_sept16_T1R3_GL7_method1.csv",
+    "neg-ACM_sept16_T1R3_GL20_method1.csv",
+    "neg-ACM_sept16_T1R3_GL21_method1.csv"
+]
+
+pfiles = [
+    "pos-ACM_sept16_T1R2_GL2_method1.csv",
+    "pos-ACM_sept16_T1R2_GL7_method1.csv",
+    "pos-ACM_sept16_T1R2_GL21_method1.csv",
+    "pos-ACM_sept16_T1R3_GL7_method1.csv",
+    "pos-ACM_sept16_T1R3_GL20_method1.csv",
+    "pos-ACM_sept16_T1R3_GL21_method1.csv"
+]
+
+processDuplicates(nfiles, 'method1-neg-dups.csv')
+processDuplicates(pfiles, 'method1-pos-dups.csv')
 
 print 'boom'
 

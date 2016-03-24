@@ -42,6 +42,6 @@ if neg_pos_mz_sets[1]:
 
 
 # Automatically opens the web browser with the calculator page open
-webbrowser.open('http://www.bmrb.wisc.edu/metabolomics/mass_query.php', new=1)
+# webbrowser.open('http://www.bmrb.wisc.edu/metabolomics/mass_query.php', new=1)
 
 print('done')

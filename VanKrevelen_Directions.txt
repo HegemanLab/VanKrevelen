@@ -30,7 +30,7 @@ Go to the "Query by:" section on the BMRB website and copy and paste the values 
 	
 Once you have received your results, copy and paste all of them into a text editor (notepad, notepad++, sublime, vim, etc) or a similar program. If you use GMail for your email you will likely have to go to the bottom of the email and then select "View entire message". NOTE: ***Do not copy any of the titles, your first row should start with a a mass*** Once you have copied all the values, paste them into the text editor and save the file as a .txt file. Do not edit what was pasted.
 	
-Return back to the command prompt. Make sure you are still in the VanKrevelen folder and then enter**:
+Return back to the command prompt. Make sure you are still in the VanKrevelen folder and then enter:
 	
 >python VanKrevelenType.py yourNewFile.txt
 	

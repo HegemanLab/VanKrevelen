@@ -34,7 +34,8 @@ def extract_needed_elemental_data(tab_separated_txt_file):
 
             # If compound was not found by BMRB then 3 will be out of range, otherwise add that formula to the compounds
             try:
-                compounds.append(new_line[3])
+                if 'C' in new_line[3]:
+                    compounds.append(new_line[3])
             except:
                 pass
 
