@@ -4,8 +4,6 @@ other databases, to pull out the numbers of Hydrogens, Carbons, Oxygens, and Nit
 '''
 
 import csv
-import pandas as pd
-
 
 def extract_needed_elemental_data(tab_separated_txt_file):
 
@@ -22,20 +20,16 @@ def extract_needed_elemental_data(tab_separated_txt_file):
     # open a text file
     with open(tab_separated_txt_file) as f:
 
-        # Hard coded for number of characters each column has
-        n = 16
-
         # Set up file reader
-        reader = f.readlines()
+        reader = csv.reader(f, delimiter="\t")
         for line in reader:
 
             # Split line into columns
-            new_line = [line[i:i+n] for i in range(0, len(line), n)]
 
             # If compound was not found by BMRB then 3 will be out of range, otherwise add that formula to the compounds
             try:
-                if 'C' in new_line[3]:
-                    compounds.append(new_line[3])
+                if 'C' in line[3]:
+                    compounds.append(line[3])
             except:
                 pass
 
@@ -159,6 +153,5 @@ def find_elements_values(elements_to_find, compounds):
         complete_element_counts.append(line_element_counts)
 
     return complete_element_counts
-
 
 
