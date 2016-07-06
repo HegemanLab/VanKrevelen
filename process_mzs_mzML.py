@@ -46,7 +46,7 @@ def process_mzs(file_name, threshold=.1):  # What fraction of the max intensity 
             for peak in spectrum.peaks:
                 if peak[1] > thresh:
                     negative_polarity = spectrum.get('MS:1000129', False)
-                    if negative_polarity == None:
+                    if negative_polarity == '':
                         keepers_neg_mz.append(peak[0])
 
                     positive_polarity = spectrum.get('MS:1000130', False)
