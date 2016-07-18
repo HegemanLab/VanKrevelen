@@ -31,7 +31,7 @@ sys.stderr.write("Reading %s ... " % filename)
 
 # Takes in the mzML file and processes all the data to extract a list with both the positive and
 # negative mz values extracted. Then writes those to two .txt files.
-neg_pos_mz_sets = process_mzs(filename)
+neg_pos_mz_sets = process_mzs(filename, threshold=.2)
 
 if neg_pos_mz_sets[0]:
     writeTxt(neg_pos_mz_sets[0], filename, 0)
