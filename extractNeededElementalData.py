@@ -24,14 +24,17 @@ def extract_needed_elemental_data(tab_separated_txt_file):
         reader = csv.reader(f, delimiter="\t")
         for line in reader:
 
-            # Split line into columns
-
             # If compound was not found by BMRB then 3 will be out of range, otherwise add that formula to the compounds
             try:
                 if 'C' in line[3]:
                     compounds.append(line[3])
             except:
-                pass
+                try:
+                    index = line[0].index('C')
+
+                    compounds.append(line[0][index:index+16])
+                except:
+                    pass
 
     # Process elemental data and close file
     elemental_list = find_elements_values(elements_to_find, compounds)
