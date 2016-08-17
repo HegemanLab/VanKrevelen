@@ -10,4 +10,4 @@ Further, if you are looking to contribute to this code base please make sure to 
 Speaking of being user friendly... The directions for the recommended workflow for this script are held in the VanKrevelenDirections.txt file in this repo. 
 
 ## Hegeman Lab - University of Minnesota Twin-Cities
-This code was developed for use in the Hegeman Lab at the University of Minnesota Twin-Cities. If you use this script in your research, please don't forget to site us. Additionally, if there are any questions about how to use this code, feel free to contact [Adrian Hegeman](hegem007@umn.edu). 
+This code was developed for use in the Hegeman Lab at the University of Minnesota Twin-Cities. If you use this script in your research, please don't forget to acknowledge or cite publication. Additionally, if there are any questions about how to use this code, feel free to contact [Adrian Hegeman](mailto:hegem007@umn.edu). 
