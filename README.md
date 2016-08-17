@@ -1,4 +1,6 @@
-# VanKrevelen - THE MOST RECENT VERSIONS OF THIS CODE CAN BE FOUND IN THE VANKREVELENLOCAL REPO
+# VanKrevelen 
+*Updated versions of this code can be found in the VanKrevelenLocal repo. This code will remain available incase its functionality is more useful to some users.*
+
 Code developed by the Hegeman Lab for Van Krevelen analysis of mass spec data. The Hegeman Lab (The Plant Metabolomics Lab at the University of Minnesota)  applies mass spectrometry-based metabolomics to plant biological or agricultural questions while simultaneously trying to improve current metabolomics methodologies.  In particular we are interested in way that stable isotopes and mass spectrometry can be used for methodological innovations in metabolomics and the analysis of metabolic flux.
 
 If you use this tool or any others associated with the Hegeman Lab we ask that you please reference us in your projects. 
